@@ -10,16 +10,24 @@ Product.belongsTo(Category, {
     model: Product,
     unique: false
   },
-  as: 'product_category'
+  as: 'product_category',
+  foreignKey:{
+    name: 'category_id',
+    allowNull:false
+}
 });
 
 // Categories have many Products
-Category.belongsToMany(Product, {
+Category.hasOne(Product, {
   through: {
     model: Product,
     unique: false
   },
-  as: 'category_product'
+  as: 'category_product',
+  foreignKey:{
+    name: 'category_id',
+    allowNull:false
+}
 });
 
 
